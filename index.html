@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>
+			AChecker
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Le styles -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+
+    </style>
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<!-- Fav and touch icons -->
+		<link rel="shortcut icon" href="ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar">
+					</span>
+				<span class="icon-bar">
+				</span>
+			<span class="icon-bar">
+			</span>
+		</a>
+		<a class="brand" href="#">
+			AChecker
+		</a>
+		<div class="nav-collapse collapse">
+			<ul class="nav">
+				<li class="active">
+					<a href="http://justia.com">
+						Home</a>
+				</li>
+				<li>
+					<a href="#about">
+						About</a>
+				</li>
+				<li>
+					<a href="#contact">
+						Contact</a>
+				</li>
+			</ul>
+		</div>
+<!--/.nav-collapse -->
+	</div>
+</div>
+</div>
+<div class="container">
+<!-- Main hero unit for a primary marketing message or call to action -->
+	<div class="hero-unit">
+		<div class="page-header">
+  		<h1>Welcome to AChecker!</h1>
+		</div>
+		<form id="redirects_form">
+			<textarea rows="8" class="input-xxlarge" name="urls"></textarea>
+		</form>
+		<p>
+		<a id="submit_btn" class="btn btn-primary btn-large">
+			Check!</a>
+		</p>
+	</div>
+	<hr>
+
+	<div id="results" class="results">
+
+	</div>
+
+	<footer>
+		<p>
+			&copy; Daniel Adelntado 2016
+		</p>
+	</footer>
+</div>
+<!-- /container -->
+
+
+<script type="text/javascript">
+
+		$("#submit_btn").click(function() {
+
+	    $.ajax({
+         type: "POST",
+         url: 		'code/achecker.php',
+         data: $("#redirects_form").serialize(),
+         success: function(data) {
+         		$('#results').html(data);
+         },
+         crossDomain : true
+      });
+      return false;
+		});
+		</script>
+</body>
+</html>
